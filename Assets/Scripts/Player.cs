@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     // Config
-    [SerializeField] float runSpeed = 6f;
-    [SerializeField] float jumpSpeed = 6f;
+    [SerializeField] float runSpeed = 5f;
+    [SerializeField] float sprintSpeed = 8f;
+    [SerializeField] float jumpSpeed = 19.5f;
     [SerializeField] float climbSpeed = 6f;
 
     // State
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour {
 
     private void Run() {
         float controlThrow = Input.GetAxisRaw("Horizontal");
+
         Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, playerRigidbody2D.velocity.y);
         playerRigidbody2D.velocity = playerVelocity;
 

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     // Config
-    [SerializeField] float runSpeed = 5f;
+    [SerializeField] float runSpeed = 6f;
+    [SerializeField] float jumpSpeed = 6f;
 
     // State
     bool isAlive = true;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Run();
+        Jump();
         FlipSprite();
 	}
 
@@ -32,6 +34,14 @@ public class Player : MonoBehaviour {
 
         bool playerHasHorizontalSpeed = Mathf.Abs(rigidBody2D.velocity.x) > Mathf.Epsilon;
         animator.SetBool("Running", playerHasHorizontalSpeed);
+    }
+
+    private void Jump() {
+        if (Input.GetButtonDown("Jump")) {
+            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
+            rigidBody2D.velocity += jumpVelocityToAdd;
+            animator.Play("Jumping");
+        }
     }
 
     private void FlipSprite() {

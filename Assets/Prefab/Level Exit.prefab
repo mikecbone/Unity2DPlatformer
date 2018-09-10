@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db257d41895fad741b5bb47e51b23af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelLoadDelay: 2
+  LevelLoadDelay: 1
   LevelExitSlowMo: 0.2
 --- !u!212 &212673259275299718
 SpriteRenderer:
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1662589103
-  m_SortingLayer: 7
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b7d4f2b80abd8ad4e941216108035d2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

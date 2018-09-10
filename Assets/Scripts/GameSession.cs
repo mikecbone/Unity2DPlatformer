@@ -38,6 +38,11 @@ public class GameSession : MonoBehaviour {
         SetScoreImageNumber();
     }
 
+    public void PlayGameMusic() {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
+    }
+
     private void SetLivesImageNumber() {
         switch (playerLives) {
             case 3:

@@ -53,12 +53,12 @@ TagManager:
   - name: Enemy
     uniqueID: 747092555
     locked: 0
+  - name: Interactables
+    uniqueID: 1662589103
+    locked: 0
   - name: Player
     uniqueID: 2384643593
     locked: 0
   - name: Foreground
     uniqueID: 1540462381
-    locked: 0
-  - name: Interactables
-    uniqueID: 1662589103
     locked: 0

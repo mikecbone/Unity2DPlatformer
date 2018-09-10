@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump") && playerRigidbody2D.velocity.y < 10) {
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             playerRigidbody2D.velocity += jumpVelocityToAdd;
             animator.Play("Jumping");

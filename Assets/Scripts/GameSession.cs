@@ -66,6 +66,13 @@ public class GameSession : MonoBehaviour {
         }
     }
 
+    public void PlayFinishMusic() {
+        audioSource.clip = finishMusic;
+        if (isPlayingMusic) {
+            audioSource.Play();
+        }
+    }
+
     public void ToggleGameMusic() {
         if (audioSource.isPlaying) {
             audioSource.Pause();
@@ -77,10 +84,6 @@ public class GameSession : MonoBehaviour {
             musicToggle.sprite = musicOnSprite;
             isPlayingMusic = true;
         }
-    }
-
-    public void StopGameMusic() {
-        audioSource.Stop();
     }
 
     private void SetLivesImageNumber() {

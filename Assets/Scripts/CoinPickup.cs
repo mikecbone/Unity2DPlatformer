@@ -9,15 +9,12 @@ public class CoinPickup : MonoBehaviour {
     private SFXplayer sfxplayer;
     private bool addedToScore = false;
 
-    private void Start() {
-        sfxplayer = FindObjectOfType<SFXplayer>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if (addedToScore) {
             return;
         }
         addedToScore = true;
+        sfxplayer = FindObjectOfType<SFXplayer>();
         sfxplayer.PlaySFX(coinPickupSFX);
         FindObjectOfType<GameSession>().AddToScore(coinScore);
         Destroy(this.gameObject);

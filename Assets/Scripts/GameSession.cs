@@ -72,8 +72,8 @@ public class GameSession : MonoBehaviour {
         else {
             string playerScoreString = playerScore.ToString();
             char[] playerScoreChars = playerScoreString.ToCharArray();
-            int playerScore0 = int.Parse(playerScoreChars[0].ToString());
-            int playerScore1 = int.Parse(playerScoreChars[1].ToString());
+            int playerScore0 = int.Parse(playerScoreChars[1].ToString());
+            int playerScore1 = int.Parse(playerScoreChars[0].ToString());
 
             scoreNumber0.sprite = ReturnImageForNumber(playerScore0);
             scoreNumber1.sprite = ReturnImageForNumber(playerScore1);

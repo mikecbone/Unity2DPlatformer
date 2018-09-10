@@ -5,14 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     // Config
     [SerializeField] float runSpeed = 5f;
-    [SerializeField] float sprintSpeed = 8f;
     [SerializeField] float jumpSpeed = 19.5f;
     [SerializeField] float climbSpeed = 6f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
+    [SerializeField] AudioClip deathSFX;
 
     // State
     bool isAlive = true;
-    float DeathDelay = 2f;
+    float deathDelay = 2f;
+    SFXplayer sfxplayer;
 
     // Cached components
     Rigidbody2D playerRigidbody2D;
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour {
         playerCollider2D = GetComponent<CapsuleCollider2D>();
         playerFeetCollider2D = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = playerRigidbody2D.gravityScale;
-	}
+        sfxplayer = FindObjectOfType<SFXplayer>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour {
 
     private void Die() {
         if (playerCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards"))) {
+            sfxplayer.PlaySFX(deathSFX);
             StartCoroutine(DieAnimation());
         }
     }
@@ -96,7 +99,7 @@ public class Player : MonoBehaviour {
         isAlive = false;
         animator.SetTrigger("Dying");
         playerRigidbody2D.velocity = deathKick;
-        yield return new WaitForSecondsRealtime(DeathDelay);
+        yield return new WaitForSecondsRealtime(deathDelay);
         
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }

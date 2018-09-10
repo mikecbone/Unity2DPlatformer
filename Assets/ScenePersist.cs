@@ -24,7 +24,7 @@ public class ScenePersist : MonoBehaviour {
         if (startingSceneIndex != SceneManager.GetActiveScene().buildIndex) {
             instance = null;
             SceneManager.sceneLoaded -= OnSceneLoaded;
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

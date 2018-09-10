@@ -6,6 +6,6 @@ public class Finish : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameSession.instance.StopGameMusic();
+        GameSession.instance.PlayFinishMusic();
     }
 }

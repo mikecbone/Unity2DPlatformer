@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     // Config
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Cheat();
+
         if (!isAlive) { return; }
 
         Run();
@@ -92,6 +95,13 @@ public class Player : MonoBehaviour {
         if (playerCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards"))) {
             sfxplayer.PlaySFX(deathSFX);
             StartCoroutine(DieAnimation());
+        }
+    }
+
+    private void Cheat() {
+        if (Input.GetButtonDown("Submit")) {
+            int sceneCount = SceneManager.sceneCountInBuildSettings;
+            SceneManager.LoadScene(sceneCount - 1);
         }
     }
 

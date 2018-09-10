@@ -11,7 +11,13 @@ public class GameSession : MonoBehaviour {
     [SerializeField] Image livesNumber;
     [SerializeField] Image scoreNumber0;
     [SerializeField] Image scoreNumber1;
+    [SerializeField] Image musicToggle;
 
+    [SerializeField] Sprite musicOnSprite;
+    [SerializeField] Sprite musicOffSprite;
+
+    [SerializeField] AudioClip menuMusic;
+    [SerializeField] AudioClip levelMusic;
     [SerializeField] AudioClip finishMusic;
 
     public Sprite zero;
@@ -26,6 +32,8 @@ public class GameSession : MonoBehaviour {
     public Sprite nine;
 
     AudioSource audioSource;
+    public static GameSession instance;
+    public bool isPlayingMusic = true;
 
     private void Awake() {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -33,6 +41,7 @@ public class GameSession : MonoBehaviour {
             Destroy(this.gameObject);
         }
         else {
+            instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
     }
@@ -43,8 +52,35 @@ public class GameSession : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayGameMusic() {
-        audioSource.Play();
+    public void PlayMenuMusic() {
+        audioSource.clip = menuMusic;
+        if (isPlayingMusic) {
+            audioSource.Play();
+        }
+    }
+
+    public void PlayLevelMusic() {
+        audioSource.clip = levelMusic;
+        if (isPlayingMusic) {
+            audioSource.Play();
+        }
+    }
+
+    public void ToggleGameMusic() {
+        if (audioSource.isPlaying) {
+            audioSource.Pause();
+            musicToggle.sprite = musicOffSprite;
+            isPlayingMusic = false;
+        }
+        else {
+            audioSource.Play();
+            musicToggle.sprite = musicOnSprite;
+            isPlayingMusic = true;
+        }
+    }
+
+    public void StopGameMusic() {
+        audioSource.Stop();
     }
 
     private void SetLivesImageNumber() {
@@ -110,6 +146,18 @@ public class GameSession : MonoBehaviour {
     public void AddToScore(int pointsToAdd) {
         playerScore += pointsToAdd;
         SetScoreImageNumber();
+    }
+
+    public bool CheckIfMaxLives() {
+        return (playerLives == 3);
+    }
+
+    public void AddToLives(int livesToAdd) {
+        if (playerLives == 3) {
+            return;
+        }
+        playerLives += livesToAdd;
+        SetLivesImageNumber();
     }
 
     public void ProcessPlayerDeath() {

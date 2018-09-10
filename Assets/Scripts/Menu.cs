@@ -3,8 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
-	public void StartFirstLevel() {
-        FindObjectOfType<GameSession>().PlayGameMusic();
+    private void Start() {
+        GameSession.instance.PlayMenuMusic();
+    }
+
+    public void StartFirstLevel() {
+        GameSession.instance.PlayLevelMusic();
         SceneManager.LoadScene(1);
     }
 }

@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 6
-  sprintSpeed: 8
   jumpSpeed: 19.5
   climbSpeed: 6
   deathKick: {x: 25, y: 25}

@@ -139,6 +139,7 @@ MonoBehaviour:
   jumpSpeed: 19.5
   climbSpeed: 6
   deathKick: {x: 25, y: 25}
+  deathSFX: {fileID: 8300000, guid: 13e7ec97c5815464abac240026e8ad96, type: 3}
 --- !u!212 &212336948831648696
 SpriteRenderer:
   m_ObjectHideFlags: 1

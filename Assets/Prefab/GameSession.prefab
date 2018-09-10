@@ -320,6 +320,7 @@ MonoBehaviour:
   livesNumber: {fileID: 114420619944978932}
   scoreNumber0: {fileID: 114940323025045514}
   scoreNumber1: {fileID: 114760134435605624}
+  finishMusic: {fileID: 8300000, guid: e080602799f218040b4c753f418f47ea, type: 3}
   zero: {fileID: 21300000, guid: 8c229c05fff382448913d23819139aec, type: 3}
   one: {fileID: 21300000, guid: 45986e6fd3e859d499af4fd9aa50d90a, type: 3}
   two: {fileID: 21300000, guid: 678d16c4ba5139f4393043c2a1d74c1d, type: 3}

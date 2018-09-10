@@ -12,6 +12,8 @@ public class GameSession : MonoBehaviour {
     [SerializeField] Image scoreNumber0;
     [SerializeField] Image scoreNumber1;
 
+    [SerializeField] AudioClip finishMusic;
+
     public Sprite zero;
     public Sprite one;
     public Sprite two;
@@ -22,6 +24,8 @@ public class GameSession : MonoBehaviour {
     public Sprite seven;
     public Sprite eight;
     public Sprite nine;
+
+    AudioSource audioSource;
 
     private void Awake() {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -36,10 +40,10 @@ public class GameSession : MonoBehaviour {
     void Start() {
         SetLivesImageNumber();
         SetScoreImageNumber();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayGameMusic() {
-        AudioSource audioSource = GetComponent<AudioSource>();
         audioSource.Play();
     }
 
@@ -109,7 +113,7 @@ public class GameSession : MonoBehaviour {
     }
 
     public void ProcessPlayerDeath() {
-        if (playerLives > 0) {
+        if (playerLives > 1) {
             RemoveLife();
         }
         else {

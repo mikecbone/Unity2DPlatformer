@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
 
     // State
     bool isAlive = true;
+    float DeathDelay = 3f;
+    float DeathSlowMo = 0.3f;
 
     // Cached components
     Rigidbody2D playerRigidbody2D;
@@ -87,10 +89,18 @@ public class Player : MonoBehaviour {
 
     private void Die() {
         if (playerCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards"))) {
-            isAlive = false;
-            animator.SetTrigger("Dying");
-            playerRigidbody2D.velocity = deathKick;
-            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+            StartCoroutine(DieSlowMo());
         }
+    }
+
+    IEnumerator DieSlowMo() {
+        Time.timeScale = DeathSlowMo;
+        isAlive = false;
+        animator.SetTrigger("Dying");
+        playerRigidbody2D.velocity = deathKick;
+        yield return new WaitForSecondsRealtime(DeathDelay);
+        Time.timeScale = 1f;
+        
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 }

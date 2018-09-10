@@ -11,7 +11,6 @@ public class CoinPickup : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        //AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position);
         sfxplayer.PlaySFX(coinPickupSFX);
         Destroy(this.gameObject);
     }

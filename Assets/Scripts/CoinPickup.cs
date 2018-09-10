@@ -16,7 +16,7 @@ public class CoinPickup : MonoBehaviour {
         addedToScore = true;
         sfxplayer = FindObjectOfType<SFXplayer>();
         sfxplayer.PlaySFX(coinPickupSFX);
-        FindObjectOfType<GameSession>().AddToScore(coinScore);
+        GameSession.instance.AddToScore(coinScore);
         Destroy(this.gameObject);
     }
 }

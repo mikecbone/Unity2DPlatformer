@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 19.5f;
     [SerializeField] float climbSpeed = 6f;
-    [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
+    [SerializeField] Vector2 deathKick = new Vector2(0, 25f);
     [SerializeField] AudioClip deathSFX;
 
     // State

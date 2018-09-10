@@ -56,15 +56,45 @@ public class GameSession : MonoBehaviour {
     }
 
     private void SetScoreImageNumber() {
-        switch (playerScore) {
+        if (playerScore < 10) {
+            scoreNumber0.sprite = ReturnImageForNumber(playerScore);
+            scoreNumber1.sprite = zero;
+        }
+        else {
+            string playerScoreString = playerScore.ToString();
+            char[] playerScoreChars = playerScoreString.ToCharArray();
+            int playerScore0 = int.Parse(playerScoreChars[0].ToString());
+            int playerScore1 = int.Parse(playerScoreChars[1].ToString());
+
+            scoreNumber0.sprite = ReturnImageForNumber(playerScore0);
+            scoreNumber1.sprite = ReturnImageForNumber(playerScore1);
+        }
+    }
+
+    private Sprite ReturnImageForNumber(int number) {
+        switch (number) {
             case 0:
-                scoreNumber0.sprite = zero;
-                scoreNumber1.sprite = zero;
-                break;
+                return zero;
             case 1:
-                scoreNumber0.sprite = one;
-                scoreNumber1.sprite = zero;
-                break;
+                return one;
+            case 2:
+                return two;
+            case 3:
+                return three;
+            case 4:
+                return four;
+            case 5:
+                return five;
+            case 6:
+                return six;
+            case 7:
+                return seven;
+            case 8:
+                return eight;
+            case 9:
+                return nine;
+            default:
+                return zero;
         }
     }
 

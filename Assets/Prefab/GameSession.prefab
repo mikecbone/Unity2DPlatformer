@@ -205,7 +205,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 21749362c0b857a4a9b03f932909471d, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
@@ -508,6 +508,7 @@ MonoBehaviour:
   seven: {fileID: 21300000, guid: ecf72b2fcd02e724fa6faa331db638c7, type: 3}
   eight: {fileID: 21300000, guid: 4aa7fb6405d45e746a1f92265dcd0674, type: 3}
   nine: {fileID: 21300000, guid: 42e5a539655bfe449a398d82dc6b836a, type: 3}
+  isPlayingMusic: 1
 --- !u!114 &114741492928539408
 MonoBehaviour:
   m_ObjectHideFlags: 1

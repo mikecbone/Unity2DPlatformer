@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
-        GameSession.instance.PlayFinishMusic();
+        GameSession.instance.SetFinishMusic();
     }
 }

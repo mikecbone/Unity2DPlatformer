@@ -7,12 +7,10 @@ public class EnemyMovement : MonoBehaviour {
 
     Rigidbody2D enemyRigidbody2D;
 
-    // Use this for initialization
     void Start () {
         enemyRigidbody2D = GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if(IsFacingRight()) {
             enemyRigidbody2D.velocity = new Vector2(moveSpeed, 0f);

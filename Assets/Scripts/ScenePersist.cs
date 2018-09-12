@@ -7,7 +7,6 @@ public class ScenePersist : MonoBehaviour {
     static ScenePersist instance = null;
     int startingSceneIndex;
 
-    // Use this for initialization
     void Start () {
         if (!instance) {
             instance = this;

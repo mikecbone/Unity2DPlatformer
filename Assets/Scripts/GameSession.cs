@@ -20,20 +20,11 @@ public class GameSession : MonoBehaviour {
     [SerializeField] AudioClip levelMusic;
     [SerializeField] AudioClip finishMusic;
 
-    public Sprite zero;
-    public Sprite one;
-    public Sprite two;
-    public Sprite three;
-    public Sprite four;
-    public Sprite five;
-    public Sprite six;
-    public Sprite seven;
-    public Sprite eight;
-    public Sprite nine;
+    [SerializeField] Sprite[] numbers;
 
     AudioSource audioSource;
     public static GameSession instance;
-    public bool isPlayingMusic = true;
+    private bool isMusicMuted = false;
 
     private void Awake() {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -52,23 +43,23 @@ public class GameSession : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayMenuMusic() {
+    public void SetMenuMusic() {
         audioSource.clip = menuMusic;
-        if (isPlayingMusic) {
-            audioSource.Play();
-        }
+        PlayMusic();
     }
 
-    public void PlayLevelMusic() {
+    public void SetLevelMusic() {
         audioSource.clip = levelMusic;
-        if (isPlayingMusic) {
-            audioSource.Play();
-        }
+        PlayMusic();
     }
 
-    public void PlayFinishMusic() {
+    public void SetFinishMusic() {
         audioSource.clip = finishMusic;
-        if (isPlayingMusic) {
+        PlayMusic();
+    }
+
+    private void PlayMusic() {
+        if (!isMusicMuted) {
             audioSource.Play();
         }
     }
@@ -77,36 +68,23 @@ public class GameSession : MonoBehaviour {
         if (audioSource.isPlaying) {
             audioSource.Pause();
             musicToggle.sprite = musicOffSprite;
-            isPlayingMusic = false;
+            isMusicMuted = true;
         }
         else {
             audioSource.Play();
             musicToggle.sprite = musicOnSprite;
-            isPlayingMusic = true;
+            isMusicMuted = false;
         }
     }
 
     private void SetLivesImageNumber() {
-        switch (playerLives) {
-            case 3:
-                livesNumber.sprite = three;
-                break;
-            case 2:
-                livesNumber.sprite = two;
-                break;
-            case 1:
-                livesNumber.sprite = one;
-                break;
-            default:
-                livesNumber.sprite = zero;
-                break;
-        }
+        livesNumber.sprite = numbers[playerLives];
     }
 
     private void SetScoreImageNumber() {
         if (playerScore < 10) {
-            scoreNumber0.sprite = ReturnImageForNumber(playerScore);
-            scoreNumber1.sprite = zero;
+            scoreNumber0.sprite = numbers[playerScore];
+            scoreNumber1.sprite = numbers[0];
         }
         else {
             string playerScoreString = playerScore.ToString();
@@ -114,35 +92,8 @@ public class GameSession : MonoBehaviour {
             int playerScore0 = int.Parse(playerScoreChars[1].ToString());
             int playerScore1 = int.Parse(playerScoreChars[0].ToString());
 
-            scoreNumber0.sprite = ReturnImageForNumber(playerScore0);
-            scoreNumber1.sprite = ReturnImageForNumber(playerScore1);
-        }
-    }
-
-    private Sprite ReturnImageForNumber(int number) {
-        switch (number) {
-            case 0:
-                return zero;
-            case 1:
-                return one;
-            case 2:
-                return two;
-            case 3:
-                return three;
-            case 4:
-                return four;
-            case 5:
-                return five;
-            case 6:
-                return six;
-            case 7:
-                return seven;
-            case 8:
-                return eight;
-            case 9:
-                return nine;
-            default:
-                return zero;
+            scoreNumber0.sprite = numbers[playerScore0];
+            scoreNumber1.sprite = numbers[playerScore1];
         }
     }
 

@@ -8,12 +8,12 @@ public class Player : MonoBehaviour {
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 19.5f;
     [SerializeField] float climbSpeed = 6f;
+    [SerializeField] float deathDelay = 2f;
     [SerializeField] Vector2 deathKick = new Vector2(0, 25f);
     [SerializeField] AudioClip deathSFX;
 
     // State
     bool isAlive = true;
-    float deathDelay = 2f;
     SFXplayer sfxplayer;
 
     // Cached components
@@ -23,7 +23,6 @@ public class Player : MonoBehaviour {
     BoxCollider2D playerFeetCollider2D;
     float gravityScaleAtStart;
 
-	// Use this for initialization
 	void Start () {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -33,7 +32,6 @@ public class Player : MonoBehaviour {
         sfxplayer = FindObjectOfType<SFXplayer>();
     }
 	
-	// Update is called once per frame
 	void Update () {
         Cheat();
 
